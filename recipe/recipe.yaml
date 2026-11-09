@@ -5,6 +5,7 @@ schema_version: 1
 
 context:
   version: "6.1.1"
+  build_number: 1
 
 package:
   # 'presto' is taken on bioconda by an unrelated tool (immcantation's
@@ -19,11 +20,18 @@ source:
     sha256: 068e675bc2c0a8cdc5de4d63b88c3f9cecf4ccc81700952aa283785697901ceb
 
 build:
-  number: 0
+  # The x86-64-v3 variant gets a higher build number (+200), so the solver
+  # prefers it on CPUs that support it; the microarch-level package's
+  # run_export keeps it off older CPUs, which get the baseline build.
+  number: ${{ build_number + 100 * ((microarch_level | default(1) | int) - 1) }}
   skip: win
 
 requirements:
   build:
+    # Adds -march=x86-64-v3 (etc.) to CFLAGS for the level-3 variant.  build.sh
+    # passes no c_args to meson, so meson uses CFLAGS.
+    - if: unix and x86_64
+      then: x86_64-microarch-level ==${{ microarch_level }}
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - meson >=1.3

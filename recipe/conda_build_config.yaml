@@ -1,0 +1,9 @@
+# x86-64 microarchitecture variants: a baseline build for every x86-64 CPU, plus
+# an x86-64-v3 (AVX2/FMA, ~2013+ CPUs) build that the solver prefers wherever
+# the CPU supports it (via the __archspec virtual package; see recipe.yaml).
+# accelsearch, which dominates PRESTO search runtimes, is 2.4-2.6x faster with
+# -march=x86-64-v3 and gives byte-identical candidates.  No level 4 (AVX-512):
+# CI runners cannot guarantee it, and it is not needed for this gain.
+microarch_level:
+  - 1
+  - 3  # [unix and x86_64]
