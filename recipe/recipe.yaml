@@ -19,7 +19,7 @@ source:
     sha256: 67ff5aa00049a19912a667cc3ce1dad5fe8537334ff0a3bb195c6477f51c0998
 
 build:
-  number: 0
+  number: 1
   # PRESTO needs Python >=3.12 (python/pyproject.toml).  Skip older variants
   # rather than constrain python in host/run, which would drop it from the
   # build variant and build one unpinned package for every python job.
