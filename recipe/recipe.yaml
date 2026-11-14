@@ -4,7 +4,7 @@
 schema_version: 1
 
 context:
-  version: "6.2.0"
+  version: "6.3.0"
 
 package:
   # 'presto' is taken on bioconda by an unrelated tool (immcantation's
@@ -16,10 +16,10 @@ package:
 
 source:
   - url: https://github.com/scottransom/presto/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 67ff5aa00049a19912a667cc3ce1dad5fe8537334ff0a3bb195c6477f51c0998
+    sha256: 6b40a38d42ae8b78bb8d49ba9d338d851679b3bcebee5e6066969a405e0dae52
 
 build:
-  number: 1
+  number: 0
   # PRESTO needs Python >=3.12 (python/pyproject.toml).  Skip older variants
   # rather than constrain python in host/run, which would drop it from the
   # build variant and build one unpinned package for every python job.
