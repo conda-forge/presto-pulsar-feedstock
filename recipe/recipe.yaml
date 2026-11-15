@@ -4,7 +4,7 @@
 schema_version: 1
 
 context:
-  version: "6.3.1"
+  version: "6.3.2"
 
 package:
   # 'presto' is taken on bioconda by an unrelated tool (immcantation's
@@ -16,7 +16,7 @@ package:
 
 source:
   - url: https://github.com/scottransom/presto/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 25d76687c869edd630398e89d25a04b70492587dd94e09fc13d2b763ea4291ab
+    sha256: ea4eb95c0040384d52ef76ba25fe65f3415c1d410c47fc378ed40966f7e59f5a
 
 build:
   number: 0
